@@ -20,34 +20,14 @@ executors:
 jobs:
 
   check_codebase_quality:
-    executor: node
-    resource_class: medium
-    steps:
-      - checkout
-      - run:
-          name: Install Cypress dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y \
-              xvfb \
-              libgtk2.0-0 \
-              libgtk-3-0 \
-              libgbm-dev \
-              libnotify-dev \
-              libnss3 \
-              libxss1 \
-              libasound2 \
-              libxtst6 \
-              xauth
-      - run:
-          name: Install dependencies
-          command: |
-            npm install --ignore-scripts
-      - run:
-          name: Install Cypress
-          command: |
-            npx cypress install
-            npx cypress verify
+  executor: node
+  resource_class: medium
+  steps:
+    - checkout
+    - run:
+        name: Install dependencies
+        command: |
+          npm install --ignore-scripts
 
   init_update_infrastructure:
     executor: terraform
