@@ -1,4 +1,13 @@
+provider "aws" {
+  alias  = "west"
+  region = "us-west-1"  # у твоєму tfvars region = "us-west-1"
+  shared_config_files = ["/home/circleci/project/config"]
+  profile = terraform.workspace
+}
+
+
 resource "aws_s3_bucket" "codebase" {
+  provider = aws.west
   bucket = "${var.prefix}-codebase"
 
   tags = var.common_tags
@@ -6,6 +15,7 @@ resource "aws_s3_bucket" "codebase" {
 
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3_encryption" {
+  provider = aws.west
   bucket = aws_s3_bucket.codebase.id
   rule {
     bucket_key_enabled = true
@@ -16,6 +26,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3_encryption" {
 }
 
 resource "aws_s3_bucket_policy" "s3_policy" {
+  provider = aws.west
   bucket = aws_s3_bucket.codebase.bucket
   policy = <<EOF
     {
