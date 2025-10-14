@@ -20,14 +20,14 @@ executors:
 jobs:
 
   check_codebase_quality:
-  executor: node
-  resource_class: medium
-  steps:
-    - checkout
-    - run:
-        name: Install dependencies
-        command: |
-          npm install --ignore-scripts
+    executor: node
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            npm install --ignore-scripts
 
   init_update_infrastructure:
     executor: terraform
