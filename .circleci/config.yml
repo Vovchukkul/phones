@@ -19,16 +19,20 @@ executors:
 
 jobs:
 
-  check_codebase_quality:
-    executor: node
-    resource_class: medium
-    steps:
-      - checkout
-      - run:
-          name: Install dependecies
-          command: |
-            npm install
-      # - sonarcloud/scan
+check_codebase_quality:
+  executor: node
+  resource_class: medium
+  steps:
+    - checkout
+    - run:
+        name: Install system dependencies for node-gyp
+        command: |
+          sudo apt-get update
+          sudo apt-get install -y python3-distutils python3-dev build-essential
+    - run:
+        name: Install project dependencies
+        command: |
+          npm install
 
   init_update_infrastructure:
     executor: terraform
