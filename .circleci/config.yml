@@ -49,23 +49,6 @@ jobs:
             npx cypress install
             npx cypress verify
 
-    executor: node
-    resource_class: medium
-    steps:
-      - checkout
-      - run:
-          name: Install system deps for Cypress
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev \
-            libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-      - run:
-          name: Install dependencies
-          command: |
-            npm install --ignore-scripts 
-            npx cypress install
-            npx cypress verify
-
   init_update_infrastructure:
     executor: terraform
     resource_class: medium
