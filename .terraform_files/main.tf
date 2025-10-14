@@ -5,7 +5,7 @@ terraform {
     bucket               = "phones-tfstate" # Replace PROJECT_NAME with the name of your project
     workspace_key_prefix = "environments-frontend"
     key                  = "resources.tfstate"
-    region               = "us-east-1" # Select your default region
+    region               = "us-west-1" # Select your default region
     encrypt              = true
   }
 }
@@ -13,7 +13,7 @@ terraform {
 
 provider "aws" {
   shared_config_files = local.config_file
-  region              = "us-east-1" # Select the same region as above in backend "s3" block
+  region              = "us-west-1" # Select the same region as above in backend "s3" block
   profile             = "root"
   alias               = "root"
 }
