@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
+import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Root } from './Root';
 
