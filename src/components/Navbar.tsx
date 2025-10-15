@@ -1,8 +1,7 @@
-import React from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import {
+import React, {
   useContext, useMemo,
 } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Logo } from './Logo';
 import './Navbar.scss';

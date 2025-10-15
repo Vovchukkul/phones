@@ -1,5 +1,4 @@
-import React from 'react';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Slider } from '../components/Slider';
 import { Phone } from '../types/Phone';
 import { ProductSlider } from '../components/ProductSlider';

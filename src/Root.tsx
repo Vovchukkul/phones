@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import {
   HashRouter as Router, Routes, Route,
 } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { App } from './App';
 import { PhonesPage } from './pages/PhonesPage';
 import { HomePage } from './pages/HomePage';
