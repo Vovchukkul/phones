@@ -1,27 +1,48 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore .terraform directories and their contents
+*/.terraform/
+.terraform/
+# Ignore .tfstate files, which contain sensitive information
+*.tfstate
+.tfstate.*
+*.tfstate.backup
 
-# IDE
-.idea
-.vscode
+# Ignore .tfplan files, which can be sensitive and large
+*.tfplan
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Ignore terraform log files
+terraform.log
 
-# testing
-/coverage
+# Ignore .terraform.lock.hcl, a file created by Terraform 0.14+
+.terraform.lock.hcl
 
-# production
-/build
+# Ignore crash.log files, which can contain sensitive information
+crash.log
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Ignore override files as they're usually used to override resources in Terraform
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore files that end in "-local" or "-override" as they're often used for overrides
+*-local
+*-override
+
+# Ignore provider binary files
+*/terraform-provider-
+
+# Ignore .terraform/environment files, a legacy feature
+*/.terraform/environment
+
+# Ignore .vscode directory
+.vscode/
+
+# Ignore .idea directory
+.idea/
+
+# Ignore .terraform/environment/ directory, a legacy feature
+**/.terraform/environment
