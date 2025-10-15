@@ -125,7 +125,7 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
-            - dist
+            - ./
     
   deploy_the_application:
     executor: node
@@ -134,7 +134,7 @@ jobs:
       AWS_CONFIG_FILE: /home/circleci/project/config
     steps:
       - attach_workspace:
-          at: .
+          at: ./
       - configure_aws_credentials
       - aws-cli/setup:
           profile_name: default
@@ -147,7 +147,7 @@ jobs:
             cloudfront_name=${ENV}-${PROJECT_NAME}-codebase
             export AWS_CLOUD_FRONT_ID=$(aws cloudfront list-distributions --profile ${ENV} | jq --arg cfname "$cloudfront_name" '.DistributionList.Items[] | select(.DefaultCacheBehavior.TargetOriginId | test($cfname)) | .Id' | sed 's/"//g')
             # Push codebase to the AWS S3 Bucket
-            cd dist && aws s3 sync . s3://${ENV}-${PROJECT_NAME}-codebase --delete --profile ${ENV}
+            cd ./dist && aws s3 sync . s3://${ENV}-${PROJECT_NAME}-codebase --delete --profile ${ENV}
             # Create CloudFront invalidation to clear cache
             AWS_MAX_ATTEMPTS=10 aws cloudfront create-invalidation --profile ${ENV} --distribution-id "${AWS_CLOUD_FRONT_ID}" --paths "/*"
             
